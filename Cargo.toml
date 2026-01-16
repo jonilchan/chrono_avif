@@ -1,0 +1,13 @@
+[package]
+name = "chrono_avif"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+walkdir = "2.4"
+chrono = "0.4"
+rexif = "0.4"
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "tiff"] }
+ravif = { version = "0.12", features = ["threading"] }
+rayon = "1.8"
+anyhow = "1.0"
