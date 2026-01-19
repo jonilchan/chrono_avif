@@ -14,9 +14,13 @@ use walkdir::WalkDir;
 const IMAGE_EXTENSIONS: &[&str] = &["jpg", "jpeg", "png", "tiff"];
 
 fn main() -> Result<()> {
-    // 获取当前工作目录（程序运行的目录）
-    let current_dir = std::env::current_dir()
-        .context("无法获取当前工作目录")?;
+    // 获取程序可执行文件本身的路径
+    let exe_path = std::env::current_exe()
+        .context("无法获取程序运行路径")?;
+    
+    // 获取可执行文件所在的目录
+    let current_dir = exe_path.parent()
+        .context("无法获取程序所在目录")?;
     
     println!("🚀 开始处理图片文件...");
     println!("📁 处理目录: {}", current_dir.display());
